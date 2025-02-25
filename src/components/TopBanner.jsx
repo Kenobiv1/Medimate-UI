@@ -13,10 +13,16 @@ const TopBanner = () => {
 
   return (
     <div className="top-banner">
-      <h2>{currentTime.format('dddd, MMMM D, YYYY')}</h2>
-      <h3>{currentTime.format('HH:mm:ss')}</h3>
-      <p>Next Dose: 14:00</p>
-      <p>Status: Connected</p>
+      <div className="top-banner-content">
+        <div className="time-info">
+          <span className="date">{currentTime.format('ddd, MMM D')}</span>
+          <span className="time">{currentTime.format('HH:mm')}</span>
+        </div>
+        <div className="status-info">
+          <span className="next-dose">Next: 14:00</span>
+          <span className="connection">Connected</span>
+        </div>
+      </div>
     </div>
   )
 }
