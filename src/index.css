@@ -1,16 +1,22 @@
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-  color-scheme: light dark;
-  color: #242424;
-  background-color: #f5f5f5;
+  --primary-color: #1a73e8;
+  --secondary-color: #fbbc04;
+  --bg-color: #f5f5f5;
+  --text-color: #333;
+  --header-bg: #1a1a1a;
+  --header-text: #fff;
+  --card-bg: #fff;
+  --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --button-bg: var(--primary-color);
+  --button-text: #fff;
 }
 
 body {
   margin: 0;
   padding: 0;
-  background-color: #f5f5f5;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 button {
@@ -19,12 +25,14 @@ button {
   padding: 0.8em 1.2em;
   font-size: 1rem;
   cursor: pointer;
-  background-color: #1a1a1a;
-  color: #fff;
+  background-color: var(--button-bg);
+  color: var(--button-text);
   margin: 0.5em;
+  transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
 button:hover {
+  transform: translateY(-2px);
   opacity: 0.9;
 }
 
@@ -34,17 +42,19 @@ button:hover {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0,0,0,0.5);
+  background: rgba(0, 0, 0, 0.6);
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 1000;
 }
 
 .alarm-modal {
-  background: #fff;
+  background: var(--card-bg);
   padding: 2em;
-  border-radius: 8px;
+  border-radius: 12px;
   text-align: center;
+  box-shadow: var(--card-shadow);
 }
 
 .home-actions {
@@ -59,6 +69,8 @@ button:hover {
   margin: 0.5em 0;
   padding: 1em;
   font-size: 1.2em;
+  background-color: var(--secondary-color);
+  color: var(--header-text);
 }
 
 .medication-list {
@@ -68,10 +80,10 @@ button:hover {
 }
 
 .medication-card {
-  background: #fff;
+  background: var(--card-bg);
   padding: 1em;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  border-radius: 12px;
+  box-shadow: var(--card-shadow);
 }
 
 .voice-panel {
@@ -83,8 +95,9 @@ button:hover {
 .transcript {
   margin-top: 1em;
   padding: 1em;
-  background: #fff;
-  border-radius: 8px;
+  background: var(--card-bg);
+  border-radius: 12px;
   width: 80%;
   text-align: center;
+  box-shadow: var(--card-shadow);
 }

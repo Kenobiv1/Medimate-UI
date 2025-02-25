@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   height: 100vh;
+  background: var(--bg-color);
 }
 
 .screen-container {
@@ -11,26 +12,46 @@
 }
 
 .top-banner {
-  background-color: #1a1a1a;
-  color: #fff;
-  padding: 1rem;
+  background: linear-gradient(135deg, #1a1a1a, #333);
+  color: var(--header-text);
+  padding: 1.5rem;
   text-align: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.top-banner h2 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.top-banner h3 {
+  margin: 0.5rem 0;
+  font-size: 1.2rem;
 }
 
 .bottom-nav {
   display: flex;
   justify-content: space-around;
-  background-color: #1a1a1a;
-  padding: 0.5rem 0;
+  background: var(--header-bg);
+  padding: 0.75rem 0;
+  box-shadow: 0 -2px 4px rgba(0,0,0,0.3);
 }
 
 .bottom-nav button {
   background: none;
   border: none;
-  color: #fff;
+  color: var(--header-text);
   font-size: 1rem;
+  flex: 1;
+  padding: 0.5rem;
+  transition: background 0.2s ease;
+}
+
+.bottom-nav button:hover {
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .screen {
   padding: 1rem;
+  background: var(--bg-color);
 }
