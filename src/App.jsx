@@ -1,34 +1,54 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import React, { useState } from 'react'
+import TopBanner from './components/TopBanner'
+import BottomNav from './components/BottomNav'
+import HomeScreen from './components/HomeScreen'
+import MedicationDashboard from './components/MedicationDashboard'
+import ReminderScreen from './components/ReminderScreen'
+import VoiceAssistant from './components/VoiceAssistant'
+import AlarmModal from './components/AlarmModal'
+import Settings from './components/Settings'
+import HelpSupport from './components/HelpSupport'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [activeScreen, setActiveScreen] = useState('Home')
+  const [showAlarm, setShowAlarm] = useState(false)
+
+  const renderScreen = () => {
+    switch (activeScreen) {
+      case 'Home':
+        return <HomeScreen onNavigate={setActiveScreen} onTriggerAlarm={() => setShowAlarm(true)} />
+      case 'Medications':
+        return <MedicationDashboard />
+      case 'Reminders':
+        return <ReminderScreen />
+      case 'Voice':
+        return <VoiceAssistant />
+      case 'Settings':
+        return <Settings />
+      case 'Help':
+        return <HelpSupport />
+      case 'History':
+        return (
+          <div className="screen">
+            <h2>Dispensing History</h2>
+            <p>No dispensing events yet.</p>
+          </div>
+        )
+      default:
+        return <HomeScreen onNavigate={setActiveScreen} onTriggerAlarm={() => setShowAlarm(true)} />
+    }
+  }
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="app-container">
+      <TopBanner />
+      <div className="screen-container">
+        {renderScreen()}
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+      <BottomNav onNavSelect={setActiveScreen} />
+      {showAlarm && <AlarmModal onClose={() => setShowAlarm(false)} />}
+    </div>
   )
 }
 
